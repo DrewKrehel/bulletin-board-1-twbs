@@ -1,14 +1,31 @@
-<div>
-  <div>
+ <div class="container">
+
+
+      <div class="row mb-3">
+  <div class="col-md-12 d-flex align-items-center">
     <h1>
       <%= @the_board.name %>
     </h1>
+
+    <div class="ms-auto">
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#newPostModal">
+        Add new post
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--<div>
+  <div>
+    <h1>
+      <%#= @the_board.name %>-->
+<!--    </h1>
   </div>
 </div>
 
 <button type="button" class="ms-auto btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#newPostModal">
         Add a new post
-</button>
+</button>-->
 
 <!--<h2>
   Add a new post
@@ -23,7 +40,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/insert_post" method="post">
           <div class="mb-3">
             <label for="newPost" class="form-label">Title</label>
             <input type="name" class="form-control" id="newpost" aria-describedby="newPost">
@@ -86,8 +103,6 @@
   </button>
 </form>-->
 
-<hr>
-
 <ul class="nav nav-tabs nav-fill mb-3" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Active Posts</button>
@@ -96,12 +111,53 @@
     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Expired Posts</button>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <h2>Active posts</h2>
+
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Posted on</th>
+        <th>Expires on</th>
+      </tr>
+
+      <% @active_posts.each do |a_post| %>
+        <tr>
+          <td><%= a_post.title %></td>
+          <td><%= a_post.body %></td>
+          <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
+          <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <h2>Expired posts</h2>
+
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Posted on</th>
+        <th>Expired on</th>
+      </tr>
+
+      <% @expired_posts.each do |a_post| %>
+        <tr>
+          <td><%= a_post.title %></td>
+          <td><%= a_post.body %></td>
+          <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
+          <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
-<h2>Active posts</h2>
+<!--<h2>Active posts</h2>
 
 <table border="1">
   <tr>
@@ -111,15 +167,15 @@
     <th>Expires on</th>
   </tr>
 
-  <% @active_posts.each do |a_post| %>
-    <tr>
-      <td><%= a_post.title %></td>
-      <td><%= a_post.body %></td>
-      <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
-      <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+  <%# @active_posts.each do |a_post| %>-->
+<!--    <tr>
+      <td><%#= a_post.title %></td>
+      <td><%#= a_post.body %></td>
+      <td><%#= a_post.created_at.strftime("%b %e, %Y") %></td>
+      <td><%#= a_post.expires_on.strftime("%b %e, %Y") %></td>
     </tr>
-  <% end %>
-</table>
+  <%# end %>-->
+<!--</table>
 
 <h2>Expired posts</h2>
 
@@ -131,12 +187,13 @@
     <th>Expired on</th>
   </tr>
 
-  <% @expired_posts.each do |a_post| %>
-    <tr>
-      <td><%= a_post.title %></td>
-      <td><%= a_post.body %></td>
-      <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
-      <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+  <%# @expired_posts.each do |a_post| %>-->
+<!--    <tr>
+      <td><%#= a_post.title %></td>
+      <td><%#= a_post.body %></td>
+      <td><%#= a_post.created_at.strftime("%b %e, %Y") %></td>
+      <td><%#= a_post.expires_on.strftime("%b %e, %Y") %></td>
     </tr>
-  <% end %>
-</table>
+  <%# end %>-->
+<!--</table>
+-->
