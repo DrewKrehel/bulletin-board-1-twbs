@@ -6,13 +6,55 @@
   </div>
 </div>
 
-<hr>
+<button type="button" class="ms-auto btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#newPostModal">
+        Add a new post
+</button>
 
-<h2>
+<!--<h2>
   Add a new post
-</h2>
+</h2>-->
 
-<form action="/insert_post" method="post">
+<!--Modal-->
+<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newPostModalLabel">New Post</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="newPost" class="form-label">Title</label>
+            <input type="name" class="form-control" id="newpost" aria-describedby="newPost">
+          </div>
+
+          <div class="mb-3">
+            <label for="body_box" class="form-label">Body</label>
+            <textarea id="body_box" name="query_body" rows="3" class="form-control"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="expires_on_box" class="form-label">Expires on</label>
+            <input type="date" id="expires_on_box" name="query_expires_on" class="form-control">
+          </div>
+
+          <input type="hidden" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success">Add Post</button>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<form action="/insert_post" method="post">
   <div>
     <label for="title_box">
       Title
@@ -37,14 +79,27 @@
     <input type="date" id="expires_on_box" name="query_expires_on">
   </div>
 
-  <input type="hidden" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
+  <input type="hidden" id="board_id_box" name="query_board_id" value="<%#= @the_board.id %>">
 
   <button>
     Add post
   </button>
-</form>
+</form>-->
 
 <hr>
+
+<ul class="nav nav-tabs nav-fill mb-3" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Active Posts</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Expired Posts</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+</div>
 
 <h2>Active posts</h2>
 
