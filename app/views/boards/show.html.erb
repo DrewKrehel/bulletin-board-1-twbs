@@ -1,4 +1,4 @@
-<!--Page Top-->
+<!--Board Page Title-->
 <div class="container">
 
 
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<!--Post Modal-->
+<!--'Add New Post' Modal-->
 <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -56,6 +56,7 @@
   </div>
 </div>
 
+<!--Old 'Add New Post' Form-->
 <!--<form action="/insert_post" method="post">
   <div>
     <label for="title_box">
@@ -109,7 +110,7 @@
               <h1 class="h6 my-1"><%= a_post.title %></h1>
 
               <div>
-                <%= a_post.expires_on.strftime("%b %e, %Y") %>
+                <div>Expires on <%= a_post.expires_on.strftime("%b %e, %Y") %></div>
               </div>
             </div>
 
@@ -118,12 +119,14 @@
             </div>
 
             <div class="card-footer">
-              <%= a_post.created_at.strftime("%b %e, %Y") %>
+              <div>Posted on <%= a_post.created_at.strftime("%b %e, %Y") %></div>
             </div>
           </div>
         </div>
       <% end %>
     </div>
+  </div>
+</div> 
 
 <!--old active post table-->
     <!--<table border="1">
@@ -143,8 +146,7 @@
         </tr>
       <%# end %>-->
 <!--    </table>-->
-  </div>
-
+ 
 <!--new expired posts table-->
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div class="row">
@@ -170,51 +172,9 @@
       </div>
     </div>
   </div>
-</div>
+
 <!--old expire posts table-->
-    <!--<h2>Expired posts!</h2>
-
-    <table border="1">
-      <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Posted on</th>
-        <th>Expired on</th>
-      </tr>
-
-      <%# @expired_posts.each do |a_post| %>-->
-<!--        <tr>
-          <td><%#= a_post.title %></td>
-          <td><%#= a_post.body %></td>
-          <td><%#= a_post.created_at.strftime("%b %e, %Y") %></td>
-          <td><%#= a_post.expires_on.strftime("%b %e, %Y") %></td>
-        </tr>
-      <%# end %>-->
-<!--    </table>-->
-  </div>
-</div>
-
-<!--<h2>Active posts</h2>
-
-<table border="1">
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Posted on</th>
-    <th>Expires on</th>
-  </tr>
-
-  <%# @active_posts.each do |a_post| %>-->
-<!--    <tr>
-      <td><%#= a_post.title %></td>
-      <td><%#= a_post.body %></td>
-      <td><%#= a_post.created_at.strftime("%b %e, %Y") %></td>
-      <td><%#= a_post.expires_on.strftime("%b %e, %Y") %></td>
-    </tr>
-  <%# end %>-->
-<!--</table>
-
-<h2>Expired posts</h2>
+<!--<h2>Expired posts!</h2>
 
 <table border="1">
   <tr>
@@ -224,13 +184,12 @@
     <th>Expired on</th>
   </tr>
 
-  <%# @expired_posts.each do |a_post| %>-->
-<!--    <tr>
+  <%# @expired_posts.each do |a_post| %>
+    <tr>
       <td><%#= a_post.title %></td>
       <td><%#= a_post.body %></td>
       <td><%#= a_post.created_at.strftime("%b %e, %Y") %></td>
       <td><%#= a_post.expires_on.strftime("%b %e, %Y") %></td>
     </tr>
-  <%# end %>-->
-<!--</table>
--->
+  <%# end %>
+</table>-->
